@@ -1,0 +1,31 @@
+Mini-Calc v1.5
+by KanadaKid <genesisX11@verizon.net>
+
+Info:
+
+Mini-Calc is a small and very lightweight calculator that can be run without a GUI. It was designed to be simple
+yet efficient and without any complex functions. Currently, Mini-Calc has only four basic functions, but more will be
+added in future releases.
+
+Requirements:
+
+-A Linux system (Tested on Mandrake Linux 9.2 and Redhat Linux 9)
+
+Startup:
+
+To start Mini-Calc, simple open a shell and 'cd' into the directory containing the Mini-Calc binary. Then execute the
+following in the shell:
+$ chmod a+x calculator
+$ ./calculator
+
+Now type 'help' (w/o quotes'') and hit enter for a small help screen and usage instructions.
+
+License:
+
+This program is licensed under the GNU GPL v2 License. A copy of this license is included in the package. Source code
+is also available in the source directory.
+
+Contact:
+
+You may contact the author, KanadaKid, via email at genesisX11@verizon.net
+The offical homepage is at http://freewebs.com/mini-calc/index.html.
