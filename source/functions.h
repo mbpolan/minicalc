@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2004 by KanadaKid                                       *
  *   genesisX11@verizon.net                                                *
- *   Updated (6/12/04)                                                     *
+ *   Updated (7/17/04)                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,48 +22,24 @@
 #include <iostream>
 using namespace std;
 
-// Define functions for operations
-int addition (int a, int b)
-{
-	int c;
-	c=a + b;
-	return c;
-}
+// define functions for operations in calculator.cpp
 
-int subtraction (int d, int e)
-{
-	int f;
-	f=d - e;
-	return f;
-}
-
-int multi (int g, int h)
-{
-	int i;
-	i=g * h;
-	return i;
-}
-
-int division (int j, int k)
-{
-	int l;
-	l=j / k;
-	return l;
-}
-
-int percent (int m, int n)
-{
-	int o;
-	o = m % n;
-	return o;
-}
-
-long factorial (long p)
-{
-	if (p > 1)
-		return ( p * factorial (p-1));
+class operations {
+	public:
+		// constructor / destructor
+		operations() { };
+		~operations() { };
+		double addition (double a, double b) {return a+b;}
+		double subtraction (double a, double b) {return a-b;}
+		double multi (double a, double b) {return a*b;}
+		double division (double a, double b) {return a/b;}
+		long int percent (long int a, long int b) {return a%b;}
+		double factorial (double a);
+	
+};
+double operations::factorial (double a) {
+	if (a > 1)
+		return ( a * factorial (a-1));
 	else
 		return (1);
-}
-		
-// End of file
+};
