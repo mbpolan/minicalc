@@ -21,12 +21,33 @@
 #include <qmainwindow.h>
 #include "calcbody.h"
 
+class QAction;
+class QPopupMenu;
+class QMenuBar;
+
 // the main window of the calculator where widgets are added
 class mainWindow: public QMainWindow {
+    Q_OBJECT
     public:
                 mainWindow(QWidget *parent=0, const char *name=0);
+		
+	// various methods
+	void makeActions();
+	void makeMenuBars();
+	
+    public slots:
+	void displayAboutDialog();
 	
     private:
-	calcBody *cBody;
+	calcBody *cBody; // main widget
+	
+	// menus
+	QMenuBar *menu;
+	QPopupMenu *fileMenu;
+	QPopupMenu *helpMenu;
+	
+	// actions
+	QAction *exitAct;
+	QAction *aboutAct;
 	
 } ;
