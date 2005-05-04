@@ -17,17 +17,20 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+// gminicalc.cpp: main file
 
-#include <qapplication.h>
+#include <gtkmm.h>
 #include "mainwindow.h"
 
-// main file
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
-    mainWindow calcWinMain;
-    
-    app.setMainWidget(&calcWinMain);
-    calcWinMain.show(); // set as main widget
-    
-    return app.exec();
+	Gtk::Main app(argc, argv);
+	
+	mainWindow *mw=new mainWindow("GMiniCalc 1.0");
+	mw->show();
+	
+	Gtk::Main::run(*mw);
+	
+	delete mw;
+	
+	return 0;
 };

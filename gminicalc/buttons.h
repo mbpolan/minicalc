@@ -17,21 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+// buttons.h: buttons used in the calculator
 
-#include <qpushbutton.h>
+#ifndef BUTTONS_H
+#define BUTTONS_H
 
-// a numerical button used in the calculator's interface
-class calcNumberButton: public QPushButton {
-    Q_OBJECT
-    public:
-               calcNumberButton(const char *label=0, QWidget *parent=0, const char *name=0);
-	       
-   public slots:
-	 void parseClick(); // parse the clicked button
-	       
-   signals:
-	 void clicked(int); // emit a signal containing the number stored
-	
-   private:
-	QString name; // value stored here
+#include <gtkmm/button.h>
+#include <iostream>
+
+// abstract button class
+class calcButton: public Gtk::Button {
+	public:
+		calcButton(std::string label);
+		virtual ~calcButton() {};
+		
+	protected:
 };
+
+// a button that stores a numeric value
+class valueButton: public calcButton {
+	public:
+		valueButton(std::string label, std::string val);
+		
+		// methods
+		int getVal() const {return atoi(value.c_str());}
+		
+		// signals
+		sigc::signal<int> signal_clicked();
+		
+	protected:
+		std::string value;
+};
+
+#endif

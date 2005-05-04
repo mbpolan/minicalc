@@ -17,37 +17,39 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+ // mainwindow.h: a toplevel window class
 
-#include <qmainwindow.h>
-#include "calcbody.h"
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+ 
+#include <gtkmm/box.h>
+#include <gtkmm/entry.h>
+#include <gtkmm/table.h>
+#include <gtkmm/window.h>
+#include <vector>
+#include "buttons.h"
 
-class QAction;
-class QPopupMenu;
-class QMenuBar;
-
-// the main window of the calculator where widgets are added
-class mainWindow: public QMainWindow {
-    Q_OBJECT
-    public:
-                mainWindow(QWidget *parent=0, const char *name=0);
+class mainWindow: public Gtk::Window {
+	public:
+		mainWindow(std::string caption);
+		virtual ~mainWindow();
 		
-	// various methods
-	void makeActions();
-	void makeMenuBars();
-	
-    public slots:
-	void displayAboutDialog();
-	
-    private:
-	calcBody *cBody; // main widget
-	
-	// menus
-	QMenuBar *menu;
-	QPopupMenu *fileMenu;
-	QPopupMenu *helpMenu;
-	
-	// actions
-	QAction *exitAct;
-	QAction *aboutAct;
-	
-} ;
+		// methods
+		void setDisplayText(Glib::ustring text);
+		Glib::ustring getDisplayText() const;
+		
+	private:
+		// widgets
+		Gtk::HBox *topHBox;
+		Gtk::HBox *bottomHBox;
+		
+		Gtk::Table *rootTable;
+		Gtk::Table *leftTable;
+		Gtk::Table *rightTable;
+		
+		Gtk::Entry *display;
+		
+		std::vector<calcButton*> buttons; // vector of buttons
+};
+
+#endif

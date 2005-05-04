@@ -17,20 +17,21 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 #include "buttons.h"
 
-// button constructor
-calcNumberButton::calcNumberButton(const char *label, QWidget *parent, const char *name): 
-	QPushButton(label, parent, name) {
-    name=label; // label
-  
-    // also connect a parser slot when this button is clicked
-    connect(this, SIGNAL(clicked()), SLOT(parseClick()));
+//=========================================================================//
+// start calcButton class implementations
+//=========================================================================//
+
+// constructor
+calcButton::calcButton(std::string label): Gtk::Button(label.c_str()) {
 };
 
-// slot to parse a click and emit the label as an int
-void calcNumberButton::parseClick() {
-    int val=atoi(this->text().ascii());
-    emit clicked(val);
+//=========================================================================//
+// start valueButton class implementations
+//=========================================================================//
+
+// constructor
+valueButton::valueButton(std::string label, std::string val): calcButton(label) {
+	value=val;
 };
