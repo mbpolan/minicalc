@@ -43,9 +43,11 @@ class valueButton: public calcButton {
 		int getVal() const {return atoi(value.c_str());}
 		
 		// signals
-		sigc::signal<int> signal_clicked();
+		sigc::signal<void, int> signal_clicked_id;
 		
 	protected:
+		void onButtonClicked();
+	
 		std::string value;
 };
 

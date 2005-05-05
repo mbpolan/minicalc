@@ -24,6 +24,7 @@
  
 #include <gtkmm/box.h>
 #include <gtkmm/entry.h>
+#include <gtkmm/menubar.h>
 #include <gtkmm/table.h>
 #include <gtkmm/window.h>
 #include <vector>
@@ -39,7 +40,12 @@ class mainWindow: public Gtk::Window {
 		Glib::ustring getDisplayText() const;
 		
 	private:
+		// signal handlers
+		void slot_kill();
+		void valueButtonClicked(int);
+		
 		// widgets
+		Gtk::HBox *menuHBox;
 		Gtk::HBox *topHBox;
 		Gtk::HBox *bottomHBox;
 		
@@ -47,8 +53,12 @@ class mainWindow: public Gtk::Window {
 		Gtk::Table *leftTable;
 		Gtk::Table *rightTable;
 		
+		Gtk::MenuBar *menuBar;
 		Gtk::Entry *display;
 		
+		std::vector<Gtk::MenuItem*> menuItems; // vector of menu items
+		std::vector<Gtk::Menu*> subMenus; // sub menus
+		std::vector<Gtk::MenuItem*> subMenuItems; // sub menu items
 		std::vector<calcButton*> buttons; // vector of buttons
 };
 

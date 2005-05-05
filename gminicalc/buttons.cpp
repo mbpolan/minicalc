@@ -34,4 +34,11 @@ calcButton::calcButton(std::string label): Gtk::Button(label.c_str()) {
 // constructor
 valueButton::valueButton(std::string label, std::string val): calcButton(label) {
 	value=val;
+	
+	signal_clicked().connect(sigc::mem_fun(*this, &valueButton::onButtonClicked));
+};
+
+// signal handler to emit the id of this button
+void valueButton::onButtonClicked() {
+	signal_clicked_id(atoi(value.c_str()));
 };
